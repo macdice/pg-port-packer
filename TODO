@@ -1,0 +1,5 @@
+Notes:
+
+qemu-img create -f qcow2 freebsd-ppc.qcow2 20G
+qemu-system-ppc64 -smp 8 -m 4g -drive file=freebsd-ppc.qcow2,format=qcow2,if=virtio -net nic,model=virtio -machine pseries,cap-cfpc=broken,cap-sbbc=broken,cap-ibs=broken  -cdrom FreeBSD-13.0-RELEASE-powerpc-powerpc64-disc1.iso  -boot d
+
