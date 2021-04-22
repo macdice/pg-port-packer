@@ -3,3 +3,5 @@ Notes:
 qemu-img create -f qcow2 freebsd-ppc.qcow2 20G
 qemu-system-ppc64 -smp 8 -m 4g -drive file=freebsd-ppc.qcow2,format=qcow2,if=virtio -net nic,model=virtio -machine pseries,cap-cfpc=broken,cap-sbbc=broken,cap-ibs=broken  -cdrom FreeBSD-13.0-RELEASE-powerpc-powerpc64-disc1.iso  -boot d
 
+
+qemu-system-ppc64 -smp 8 -m 4g -drive file=output-qemu/pg-port-image-freebsd13-powerpc,format=qcow2,if=virtio -netdev user,id=user.0,hostfwd=tcp::2222-:22 -device virtio-net,netdev=user.0 -machine pseries,cap-cfpc=broken,cap-sbbc=broken,cap-ibs=broken 

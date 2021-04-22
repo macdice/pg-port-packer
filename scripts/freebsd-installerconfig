@@ -1,0 +1,13 @@
+PARTITIONS=vtbd0
+DISTRIBUTIONS="kernel.txz base.txz"
+
+#!/bin/sh
+gpart bootcode -b /boot/pmbr	-p /boot/gptboot -i 1 vtbd0
+sysrc ifconfig_vtnet0=DHCP
+sysrc sshd_enable=YES
+sed -i '' -e 's/^#UseDNS yes/UseDNS no/' /etc/ssh/sshd_config
+sed -i '' -e 's/^#PermitRootLogin no/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+echo 'vagrant' | pw usermod root -h 0
+
+reboot
