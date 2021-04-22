@@ -1,0 +1,69 @@
+{
+  "builders": [
+    {
+      "boot_command": [
+       "I<enter>",
+       "<wait10><wait10>",
+       "<enter><wait>",
+       "fbsd13p<enter><wait>",
+       "<enter><wait>",
+       "<enter><wait>",
+       "<enter><wait>",
+       "<enter><wait>",
+       "<enter><wait>",
+       "<enter><wait>",
+
+       "<wait10><wait10><wait10><wait10><wait10><wait10>",
+       "<wait10><wait10><wait10><wait10><wait10><wait10>",
+       "<wait10><wait10><wait10><wait10><wait10><wait10>",
+       "<wait10><wait10><wait10><wait10><wait10><wait10>",
+
+       "<enter><wait>",
+       "<enter><wait>",
+       "<enter><wait>",
+       "<enter><wait>",
+       "<enter><wait>",
+
+       "<wait10><wait10><wait10><wait10><wait10><wait10>",
+
+       "n<wait>",
+       "<enter><wait>",
+       "y<wait>",
+       "0<enter><wait>",
+       "y<wait>",
+       "s<wait>",
+       "s<wait>",
+       "<enter><wait>",
+       "<enter><wait>",
+       "n<wait>",
+       "<enter><wait>",
+       "y<wait>",
+       "date<enter><wait>",
+       "exit<enter><wait>"
+      ],
+      "boot_wait": "130s",
+      "disk_size": 20480,
+      "http_directory": "http",
+      "iso_url": "https://download.freebsd.org/ftp/releases/ISO-IMAGES/13.0/FreeBSD-13.0-RELEASE-powerpc-powerpc64-disc1.iso",
+      "iso_checksum": "ed6ab6b9947a8df7b2cbc56b70f0068bf4095933a9480dfba3c26897e8b69cc8",
+      "shutdown_command": "sudo poweroff",
+      "ssh_password": "vagrant",
+      "ssh_timeout": "90s",
+      "ssh_username": "vagrant",
+      "type": "qemu",
+      "qemu_binary": "qemu-system-ppc64",
+      "machine_type": "pseries,cap-cfpc=broken,cap-sbbc=broken,cap-ibs=broken",
+      "accelerator": "tcg",
+      "memory": "4096"
+    }
+  ],
+  "provisioners": [
+    {
+      "scripts": [
+        "scripts/postinstall-ng.sh"
+      ],
+      "type": "shell"
+    }
+  ]
+}
+
